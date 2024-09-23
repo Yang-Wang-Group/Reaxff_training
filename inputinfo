@@ -1,0 +1,40 @@
+temp	8000  4000  5  
+cool    0  0.999 0.99
+maxloop 500 100
+lamda	0 assign_lamda 
+pcutoff	0.5
+coeff	1.0
+lammps  lmp_mpi 
+outname log.lammps
+pso	0.6  0.8  0.5  0.5
+end
+
+
+#######################################
+temp	InitTemp  MiddleTemp FinalTemp   
+cool    CoolingMethod  CoolingParemeter1 CoolingParameter2
+	CoolingMethod: 0 Mixed with method1 and method2 to accelerate the cooling
+		       Before MiddleTemp: Temp_new = Temp_old * CoolingParameter1
+		       After  MiddleTemp: Temp_new = Temp_old - CoolingParameter2
+	CoolingMethod: 1 Cooling the temp by multiplying a factor
+		       Before MiddleTemp: Temp_new = Temp_old * CoolingParemeter1
+		       After  MiddleTemp: Temp_new = Temp_old * CoolingParemeter2
+	CoolingMethod: 2 Cooling the temp by minus a decrement
+		       Before MiddleTemp: Temp_new = Temp_old - CoolingParemeter1
+		       After  MiddleTemp: Temp_new = Temp_old - CoolingParemeter2
+maxloop interval1 interval2
+	Basically, the two parameters are used to avoid the bad loop for optimization
+	interval1: find the best result in the past Paretos every "inverval1" loops
+	interval2: maximum trials in a loop.
+                   If the new parameter cannot be accept over "interval2" trials in a loop,
+                   thus find the best result and optimize again.
+lamda	mode  filename
+	lamda indicates the weight of each optimized parameters
+ 	mode: 0 weight of each opt. objective is the same
+	mode: 1 weight of each opt. objective should be assigned by a indenpendent file named "filename"
+pcutoff	The percentage of paremeters that are moved randomly in each trial
+coeff	p = exp(-1*dE/(coeff*temp))
+	coeff is used to control the possibility of acceptance
+laskyo  name of LASKYO exe file
+outname name of LASKYO output file
+

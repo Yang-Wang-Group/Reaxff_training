@@ -1,0 +1,45 @@
+# LAMMPS input file  
+units real
+atom_style full
+dimension 3
+boundary  p p p
+
+read_data data.md
+
+pair_style reax/c NULL
+pair_coeff * * para.reax C H O N Si S Fe Ni Al  
+mass 1 12.01100 #C
+mass 2 1.00794  #H
+mass 3 15.99940 #O
+mass 4 14.00674 #N
+mass 5 28.08550 #Si
+mass 6 32.065 #S
+mass 7 55.84700 #Fe
+mass 8 58.69340 #Ni
+mass 9 26.981539 #Al
+
+compute reax all pair reax/c
+variable eb   equal c_reax[1]  #bond energy
+variable ea   equal c_reax[2]  #atom energy
+variable elp  equal c_reax[3]  #lone-pair energy
+variable emol equal c_reax[4]  #molecule energy (always 0.0)
+variable ev   equal c_reax[5]  #valence angle energy
+variable epen equal c_reax[6]  #double-bond angle penalty
+variable ecoa equal c_reax[7]  #valence angle conjugation
+variable ehb  equal c_reax[8]  #hydrogen bond
+variable et   equal c_reax[9]  #torsion energy
+variable eco  equal c_reax[10] #conjugataion energy
+variable ew   equal c_reax[11] #van der Waals
+variable ep   equal c_reax[12] #Coulomb
+variable efi  equal c_reax[13] #electric field energy (0.0)
+variable eqeq equal c_reax[14] #charge equilibration
+
+fix 1 all qeq/reax 1 0.0 10.0 1.0e-6 reax/c
+
+neighbor 2 bin
+neigh_modify every 10 delay 0 check no page 10000000
+timestep 1.00000
+thermo_style custom step temp etotal pe ke v_eb v_ea v_elp v_emol v_ev v_epen v_ecoa v_ehb v_et v_eco v_ew v_ep v_efi v_eqeq
+thermo 1
+dump 1 all atom 1 dump.atom
+run 1
