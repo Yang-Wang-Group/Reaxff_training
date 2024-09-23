@@ -7,6 +7,7 @@ This work is completed using C language.
 ## Usage
 In the linux system, after downloading all files, you can use the ' make ' command to compile.
 
-
+### Description of each file
+#### file-XXX-XXX
 ## LAMMPS
 LAMMPS needs to be installed in advance
