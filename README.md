@@ -25,4 +25,4 @@ This file contains the uplimit of parameters.
 LAMMPS needs to be installed in advance
 
 ## Contact and questions
-If you have any questions, pleas contanct with us via yang.wang@swjtu.edu.cn.
+If you have any questions, pleas contanct with us at yang.wang@swjtu.edu.cn.
