@@ -6,7 +6,7 @@ This work is completed using C language.
 
 ## Usage
 In the linux system, after downloading all files, you can use the ' make ' command to compile.
-
+The results will be writen in 'result_XXX_XXX' files, the force field with lowest error could be found in these files.
 ### Description of each file
 
 #### file-XXX-XXX
