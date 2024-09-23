@@ -8,6 +8,21 @@ This work is completed using C language.
 In the linux system, after downloading all files, you can use the ' make ' command to compile.
 
 ### Description of each file
+
 #### file-XXX-XXX
+This file contains the reference density functional theory(DFT) calculation results and the corresponding model information.
+
+#### maxdp.reax
+This file contains parameters that needs to be optimized and their maximum step size. If a parameter needs to be optimized, its step size should be set to a positive number, otherwise set to zero.
+
+#### uplimit.reax
+This file contains the uplimit of parameters.
+
+#### downlimit.reax
+This file contains the uplimit of parameters.
+
 ## LAMMPS
 LAMMPS needs to be installed in advance
+
+## Contact and questions
+If you have any questions, pleas contanct with us via yang.wang@swjtu.edu.cn.
