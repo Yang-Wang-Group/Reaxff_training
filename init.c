@@ -358,8 +358,10 @@ int InitiationPartTwo(){
 	}
 
 	paraflag = (short *) malloc(sizeof(short)*nparas);
+	varflag = (short *) malloc(sizeof(short)*nparas);
 	for(i=0; i<nparas; i++){
 		paraflag[i] = 0;
+		varflag[i] = 0;
 		if(maxdp[i]>0) paraflag[i] = 1;
 	} 
 

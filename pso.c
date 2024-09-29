@@ -15,12 +15,17 @@ double RandomMove(){
 	int i;
 	srand((unsigned)time(NULL));
 	for(i=0; i<nparas; i++){
+		varflag[i] = 0;
 		if(paraflag[i]&1){
 			if ((double)rand()/RAND_MAX <= pcutoff)
 			dp[i] = PSO(i);
-			*para[i] += dp[i];	
-			if ( (*para[i]>uplimit[i])||(*para[i]<downlimit[i]) )
-				{*para[i] -= dp[i]; dp[i]=0.0;}
+			*para[i] += dp[i];
+			varflag[i] = 1;
+			if ( (*para[i]>uplimit[i]) || (*para[i]<downlimit[i])){
+				*para[i] -= dp[i]; 
+				varflag[i] = 0;
+			}
+
 		}
 	}
 	return 0;

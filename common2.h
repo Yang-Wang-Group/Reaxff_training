@@ -27,7 +27,7 @@ extern int    num_gvar, num_ovar, num_pvar, num_vdwvar, num_tvar, num_fvar, num_
 extern char   atomtype[MAX_ATOMTYPES][3];
 extern double atomweight[MAX_ATOMTYPES]; 
 extern char   pname[100][20], vdwname[100][20], tname[200][20], fname[100][20], hname[20][20];
-extern short  *paraflag;
+extern short  *paraflag, *varflag;
 
 /* PSO */
 extern double **pbest, *gbest, *cp, cnoise, cg, comega;

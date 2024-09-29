@@ -25,7 +25,7 @@ double  Initiation4reaxff(){
 double write_reaxff_input_files(int obj, int ip){
 	//write_def_rd();
 	write_data_md(obj, ip); 
-	write_para_rd();       
+	write_para_reax();       
 	return 1;
 }
 
@@ -567,25 +567,25 @@ double ReadUplimit4reaxff(){
 		sscanf(buff, "%s %lf %lf %lf %lf %lf %lf %lf %lf", atype, &a, &b, &c, &d, &e, &f, &g, &h);
 		if( strcmp(atype, atomtype[i])!=0 ) 
 			{printf("atom type [%d] is unconsistent! uplimit\n",i); exit(0);}
-		uplimit[ipara] = fabs(a); ipara++;
-		uplimit[ipara] = fabs(b); ipara++;
-		uplimit[ipara] = fabs(c); ipara++;
-		uplimit[ipara] = fabs(d); ipara++;
-		uplimit[ipara] = fabs(e); ipara++;
-		uplimit[ipara] = fabs(f); ipara++;
-		uplimit[ipara] = fabs(g); ipara++;
-		uplimit[ipara] = fabs(h); ipara++;
+		uplimit[ipara] = a; ipara++;
+		uplimit[ipara] = b; ipara++;
+		uplimit[ipara] = c; ipara++;
+		uplimit[ipara] = d; ipara++;
+		uplimit[ipara] = e; ipara++;
+		uplimit[ipara] = f; ipara++;
+		uplimit[ipara] = g; ipara++;
+		uplimit[ipara] = h; ipara++;
 		for(j=1; j<=3; j++){
 			fgets(buff, 512, fp);
 			sscanf(buff, "%lf %lf %lf %lf %lf %lf %lf %lf", &a, &b, &c, &d, &e, &f, &g, &h);
-			uplimit[ipara] = fabs(a); ipara++;
-			uplimit[ipara] = fabs(b); ipara++;
-			uplimit[ipara] = fabs(c); ipara++;
-			uplimit[ipara] = fabs(d); ipara++;
-			uplimit[ipara] = fabs(e); ipara++;
-			uplimit[ipara] = fabs(f); ipara++;
-			uplimit[ipara] = fabs(g); ipara++;
-			uplimit[ipara] = fabs(h); ipara++;
+		uplimit[ipara] = a; ipara++;
+		uplimit[ipara] = b; ipara++;
+		uplimit[ipara] = c; ipara++;
+		uplimit[ipara] = d; ipara++;
+		uplimit[ipara] = e; ipara++;
+		uplimit[ipara] = f; ipara++;
+		uplimit[ipara] = g; ipara++;
+		uplimit[ipara] = h; ipara++;
 		}
 	}
 	if(num!=num_ovar) {printf("num_ovar is unconsistent! uplimit\n"); exit(0);}
@@ -600,24 +600,24 @@ double ReadUplimit4reaxff(){
 		sprintf(name, " %2d %2d",at1,at2); 
 		if( strcmp(name, pname[i])!=0 )
 			{printf("pair-atom parameters of (%d,%d) are unconsistent! uplimit\n",at1,at2); exit(0);}
-		uplimit[ipara]=fabs(a); ipara++;
-		uplimit[ipara]=fabs(b); ipara++;
-		uplimit[ipara]=fabs(c); ipara++;
-		uplimit[ipara]=fabs(d); ipara++;
-		uplimit[ipara]=fabs(e); ipara++;
-		uplimit[ipara]=fabs(f); ipara++;
-		uplimit[ipara]=fabs(g); ipara++;
-		uplimit[ipara]=fabs(h); ipara++;
+		uplimit[ipara] = a; ipara++;
+		uplimit[ipara] = b; ipara++;
+		uplimit[ipara] = c; ipara++;
+		uplimit[ipara] = d; ipara++;
+		uplimit[ipara] = e; ipara++;
+		uplimit[ipara] = f; ipara++;
+		uplimit[ipara] = g; ipara++;
+		uplimit[ipara] = h; ipara++;
 		fgets(buff, 512, fp);
 		sscanf(buff, "%lf %lf %lf %lf %lf %lf %lf %lf", &a, &b, &c, &d, &e, &f, &g, &h);
-		uplimit[ipara]=fabs(a); ipara++;
-		uplimit[ipara]=fabs(b); ipara++;
-		uplimit[ipara]=fabs(c); ipara++;
-		uplimit[ipara]=fabs(d); ipara++;
-		uplimit[ipara]=fabs(e); ipara++;
-		uplimit[ipara]=fabs(f); ipara++;
-		uplimit[ipara]=fabs(g); ipara++;
-		uplimit[ipara]=fabs(h); ipara++;
+		uplimit[ipara] = a; ipara++;
+		uplimit[ipara] = b; ipara++;
+		uplimit[ipara] = c; ipara++;
+		uplimit[ipara] = d; ipara++;
+		uplimit[ipara] = e; ipara++;
+		uplimit[ipara] = f; ipara++;
+		uplimit[ipara] = g; ipara++;
+		uplimit[ipara] = h; ipara++;
 	}	
 	if(num!=num_pvar) {printf("num_pvar is unconsistent! uplimit\n"); exit(0);}
 		
@@ -630,12 +630,12 @@ double ReadUplimit4reaxff(){
 		sprintf(name, " %2d %2d",at1,at2); 
 		if( strcmp(name, vdwname[i])!=0 )
 			{printf("vdW parameters of (%d,%d) are unconsistent! uplimit\n",at1,at2); exit(0);}
-		uplimit[ipara]=fabs(a); ipara++;
-		uplimit[ipara]=fabs(b); ipara++;
-		uplimit[ipara]=fabs(c); ipara++;
-		uplimit[ipara]=fabs(d); ipara++;
-		uplimit[ipara]=fabs(e); ipara++;
-		uplimit[ipara]=fabs(f); ipara++;
+		uplimit[ipara] = a; ipara++;
+		uplimit[ipara] = b; ipara++;
+		uplimit[ipara] = c; ipara++;
+		uplimit[ipara] = d; ipara++;
+		uplimit[ipara] = e; ipara++;
+		uplimit[ipara] = f; ipara++;
 	}
 	if(num!=num_vdwvar) {printf("num_vdwvar is unconsistent! uplimit\n"); exit(0);}
 
@@ -648,13 +648,13 @@ double ReadUplimit4reaxff(){
 		sprintf(name, " %2d %2d %2d",at1,at2,at3); 
 		if( strcmp(name, tname[i])!=0 )
 			{printf("triple-atom parameters of (%d,%d,%d) are unconsistent! uplimit\n",at1,at2,at3); exit(0);}
-		uplimit[ipara]=fabs(a); ipara++;
-		uplimit[ipara]=fabs(b); ipara++;
-		uplimit[ipara]=fabs(c); ipara++;
-		uplimit[ipara]=fabs(d); ipara++;
-		uplimit[ipara]=fabs(e); ipara++;
-		uplimit[ipara]=fabs(f); ipara++;
-		uplimit[ipara]=fabs(g); ipara++;
+		uplimit[ipara] = a; ipara++;
+		uplimit[ipara] = b; ipara++;
+		uplimit[ipara] = c; ipara++;
+		uplimit[ipara] = d; ipara++;
+		uplimit[ipara] = e; ipara++;
+		uplimit[ipara] = f; ipara++;
+		uplimit[ipara] = g; ipara++;
 	}	
 	if(num!=num_tvar) {printf("num_tvar is unconsistent! uplimit\n"); exit(0);}
 		
@@ -667,13 +667,13 @@ double ReadUplimit4reaxff(){
 		sprintf(name, " %2d %2d %2d %2d",at1,at2,at3,at4); 
 		if( strcmp(name, fname[i])!=0 )
 			{printf("4body parameters of (%d,%d,%d,%d) are unconsistent! uplimit\n",at1,at2,at3,at4); exit(0);}
-		uplimit[ipara]=fabs(a); ipara++;
-		uplimit[ipara]=fabs(b); ipara++;
-		uplimit[ipara]=fabs(c); ipara++;
-		uplimit[ipara]=fabs(d); ipara++;
-		uplimit[ipara]=fabs(e); ipara++;
-		uplimit[ipara]=fabs(f); ipara++;
-		uplimit[ipara]=fabs(g); ipara++;
+		uplimit[ipara] = a; ipara++;
+		uplimit[ipara] = b; ipara++;
+		uplimit[ipara] = c; ipara++;
+		uplimit[ipara] = d; ipara++;
+		uplimit[ipara] = e; ipara++;
+		uplimit[ipara] = f; ipara++;
+		uplimit[ipara] = g; ipara++;
 	}	
 	if(num!=num_fvar) {printf("num_fvar is unconsistent! uplimit\n"); exit(0);}
 		
@@ -686,10 +686,10 @@ double ReadUplimit4reaxff(){
 		sprintf(name, " %2d %2d %2d",at1,at2,at3); 
 		if( strcmp(name, hname[i])!=0 )
 			{printf("hydrogen bond of (%d,%d,%d) are unconsistent! uplimit\n",at1,at2,at3); exit(0);}
-		uplimit[ipara]=fabs(a); ipara++;
-		uplimit[ipara]=fabs(b); ipara++;
-		uplimit[ipara]=fabs(c); ipara++;
-		uplimit[ipara]=fabs(d); ipara++;
+		uplimit[ipara] = a; ipara++;
+		uplimit[ipara] = b; ipara++;
+		uplimit[ipara] = c; ipara++;
+		uplimit[ipara] = d; ipara++;
 	}	
 	if(num!=num_hvar) {printf("num_hvar is unconsistent! uplimit\n"); exit(0);}
 	
@@ -738,25 +738,25 @@ double ReadDownlimit4reaxff(){
 		sscanf(buff, "%s %lf %lf %lf %lf %lf %lf %lf %lf", atype, &a, &b, &c, &d, &e, &f, &g, &h);
 		if( strcmp(atype, atomtype[i])!=0 ) 
 			{printf("atom type [%d] is unconsistent! downlimit\n",i); exit(0);}
-		downlimit[ipara] = fabs(a); ipara++;
-		downlimit[ipara] = fabs(b); ipara++;
-		downlimit[ipara] = fabs(c); ipara++;
-		downlimit[ipara] = fabs(d); ipara++;
-		downlimit[ipara] = fabs(e); ipara++;
-		downlimit[ipara] = fabs(f); ipara++;
-		downlimit[ipara] = fabs(g); ipara++;
-		downlimit[ipara] = fabs(h); ipara++;
+		downlimit[ipara]=a; ipara++;
+		downlimit[ipara]=b; ipara++;
+		downlimit[ipara]=c; ipara++;
+		downlimit[ipara]=d; ipara++;
+		downlimit[ipara]=e; ipara++;
+		downlimit[ipara]=f; ipara++;
+		downlimit[ipara]=g; ipara++;
+		downlimit[ipara]=h; ipara++;
 		for(j=1; j<=3; j++){
 			fgets(buff, 512, fp);
 			sscanf(buff, "%lf %lf %lf %lf %lf %lf %lf %lf", &a, &b, &c, &d, &e, &f, &g, &h);
-			downlimit[ipara] = fabs(a); ipara++;
-			downlimit[ipara] = fabs(b); ipara++;
-			downlimit[ipara] = fabs(c); ipara++;
-			downlimit[ipara] = fabs(d); ipara++;
-			downlimit[ipara] = fabs(e); ipara++;
-			downlimit[ipara] = fabs(f); ipara++;
-			downlimit[ipara] = fabs(g); ipara++;
-			downlimit[ipara] = fabs(h); ipara++;
+		downlimit[ipara]=a; ipara++;
+		downlimit[ipara]=b; ipara++;
+		downlimit[ipara]=c; ipara++;
+		downlimit[ipara]=d; ipara++;
+		downlimit[ipara]=e; ipara++;
+		downlimit[ipara]=f; ipara++;
+		downlimit[ipara]=g; ipara++;
+		downlimit[ipara]=h; ipara++;
 		}
 	}
 	if(num!=num_ovar) {printf("num_ovar is unconsistent! downlimit\n"); exit(0);}
@@ -770,24 +770,24 @@ double ReadDownlimit4reaxff(){
 		sprintf(name, " %2d %2d",at1,at2); 
 		if( strcmp(name, pname[i])!=0 )
 			{printf("pair-atom parameters of (%d,%d) are unconsistent! downlimit\n",at1,at2); exit(0);}
-		downlimit[ipara]=fabs(a); ipara++;
-		downlimit[ipara]=fabs(b); ipara++;
-		downlimit[ipara]=fabs(c); ipara++;
-		downlimit[ipara]=fabs(d); ipara++;
-		downlimit[ipara]=fabs(e); ipara++;
-		downlimit[ipara]=fabs(f); ipara++;
-		downlimit[ipara]=fabs(g); ipara++;
-		downlimit[ipara]=fabs(h); ipara++;
+		downlimit[ipara]=a; ipara++;
+		downlimit[ipara]=b; ipara++;
+		downlimit[ipara]=c; ipara++;
+		downlimit[ipara]=d; ipara++;
+		downlimit[ipara]=e; ipara++;
+		downlimit[ipara]=f; ipara++;
+		downlimit[ipara]=g; ipara++;
+		downlimit[ipara]=h; ipara++;
 		fgets(buff, 512, fp);
 		sscanf(buff, "%lf %lf %lf %lf %lf %lf %lf %lf", &a, &b, &c, &d, &e, &f, &g, &h);
-		downlimit[ipara]=fabs(a); ipara++;
-		downlimit[ipara]=fabs(b); ipara++;
-		downlimit[ipara]=fabs(c); ipara++;
-		downlimit[ipara]=fabs(d); ipara++;
-		downlimit[ipara]=fabs(e); ipara++;
-		downlimit[ipara]=fabs(f); ipara++;
-		downlimit[ipara]=fabs(g); ipara++;
-		downlimit[ipara]=fabs(h); ipara++;
+		downlimit[ipara]=a; ipara++;
+		downlimit[ipara]=b; ipara++;
+		downlimit[ipara]=c; ipara++;
+		downlimit[ipara]=d; ipara++;
+		downlimit[ipara]=e; ipara++;
+		downlimit[ipara]=f; ipara++;
+		downlimit[ipara]=g; ipara++;
+		downlimit[ipara]=h; ipara++;
 	}	
 	if(num!=num_pvar) {printf("num_pvar is unconsistent! downlimit\n"); exit(0);}
 		
@@ -800,12 +800,12 @@ double ReadDownlimit4reaxff(){
 		sprintf(name, " %2d %2d",at1,at2); 
 		if( strcmp(name, vdwname[i])!=0 )
 			{printf("vdW parameters of (%d,%d) are unconsistent! downlimit\n",at1,at2); exit(0);}
-		downlimit[ipara]=fabs(a); ipara++;
-		downlimit[ipara]=fabs(b); ipara++;
-		downlimit[ipara]=fabs(c); ipara++;
-		downlimit[ipara]=fabs(d); ipara++;
-		downlimit[ipara]=fabs(e); ipara++;
-		downlimit[ipara]=fabs(f); ipara++;
+		downlimit[ipara]=a; ipara++;
+		downlimit[ipara]=b; ipara++;
+		downlimit[ipara]=c; ipara++;
+		downlimit[ipara]=d; ipara++;
+		downlimit[ipara]=e; ipara++;
+		downlimit[ipara]=f; ipara++;
 	}
 	if(num!=num_vdwvar) {printf("num_vdwvar is unconsistent! downlimit\n"); exit(0);}
 
@@ -818,13 +818,13 @@ double ReadDownlimit4reaxff(){
 		sprintf(name, " %2d %2d %2d",at1,at2,at3); 
 		if( strcmp(name, tname[i])!=0 )
 			{printf("triple-atom parameters of (%d,%d,%d) are unconsistent! downlimit\n",at1,at2,at3); exit(0);}
-		downlimit[ipara]=fabs(a); ipara++;
-		downlimit[ipara]=fabs(b); ipara++;
-		downlimit[ipara]=fabs(c); ipara++;
-		downlimit[ipara]=fabs(d); ipara++;
-		downlimit[ipara]=fabs(e); ipara++;
-		downlimit[ipara]=fabs(f); ipara++;
-		downlimit[ipara]=fabs(g); ipara++;
+		downlimit[ipara]=a; ipara++;
+		downlimit[ipara]=b; ipara++;
+		downlimit[ipara]=c; ipara++;
+		downlimit[ipara]=d; ipara++;
+		downlimit[ipara]=e; ipara++;
+		downlimit[ipara]=f; ipara++;
+		downlimit[ipara]=g; ipara++;
 	}	
 	if(num!=num_tvar) {printf("num_tvar is unconsistent! downlimit\n"); exit(0);}
 		
@@ -837,13 +837,13 @@ double ReadDownlimit4reaxff(){
 		sprintf(name, " %2d %2d %2d %2d",at1,at2,at3,at4); 
 		if( strcmp(name, fname[i])!=0 )
 			{printf("4body parameters of (%d,%d,%d,%d) are unconsistent! downlimit\n",at1,at2,at3,at4); exit(0);}
-		downlimit[ipara]=fabs(a); ipara++;
-		downlimit[ipara]=fabs(b); ipara++;
-		downlimit[ipara]=fabs(c); ipara++;
-		downlimit[ipara]=fabs(d); ipara++;
-		downlimit[ipara]=fabs(e); ipara++;
-		downlimit[ipara]=fabs(f); ipara++;
-		downlimit[ipara]=fabs(g); ipara++;
+		downlimit[ipara]=a; ipara++;
+		downlimit[ipara]=b; ipara++;
+		downlimit[ipara]=c; ipara++;
+		downlimit[ipara]=d; ipara++;
+		downlimit[ipara]=e; ipara++;
+		downlimit[ipara]=f; ipara++;
+		downlimit[ipara]=g; ipara++;
 	}	
 	if(num!=num_fvar) {printf("num_fvar is unconsistent! downlimit\n"); exit(0);}
 		
@@ -856,10 +856,10 @@ double ReadDownlimit4reaxff(){
 		sprintf(name, " %2d %2d %2d",at1,at2,at3); 
 		if( strcmp(name, hname[i])!=0 )
 			{printf("hydrogen bond of (%d,%d,%d) are unconsistent! downlimit\n",at1,at2,at3); exit(0);}
-		downlimit[ipara]=fabs(a); ipara++;
-		downlimit[ipara]=fabs(b); ipara++;
-		downlimit[ipara]=fabs(c); ipara++;
-		downlimit[ipara]=fabs(d); ipara++;
+		downlimit[ipara]=a; ipara++;
+		downlimit[ipara]=b; ipara++;
+		downlimit[ipara]=c; ipara++;
+		downlimit[ipara]=d; ipara++;
 	}	
 	if(num!=num_hvar) {printf("num_hvar is unconsistent! downlimit\n"); exit(0);}
 	
@@ -907,8 +907,8 @@ double write_in_input(int obj, int ip){
     {
         if (strncmp(linedata,"pair_coeff",9)==0)
         {
-			fprintf(fpw,"%s * * %s ","pair_coeff","para.md");
-            fprintf(fpw,"%s ","C H O N Si S Fe Ni Al ");
+			fprintf(fpw,"%s * * %s ","pair_coeff","para.reax");
+            fprintf(fpw,"%s ","C H O N Si S Fe Ni Al");
             fprintf(fpw,"\n");
 		}
         else{

@@ -62,8 +62,13 @@ int McmosaUpdata(double p, double *devi){
 	}
 	else{
 		//the movement is not accepted, delete random movements of paras
-		for(i=0; i<nparas; i++)
-			*para[i] -= dp[i];
+		for(i=0; i<nparas; i++){
+			if(varflag[i] == 1){
+				*para[i] -= dp[i];
+				varflag[i] = 0;
+			}
+		}
+
 	}
 
 	//UpdatePSO();

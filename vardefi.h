@@ -29,7 +29,7 @@ int    num_gvar, num_ovar, num_pvar, num_vdwvar, num_tvar, num_fvar, num_hvar;
 char   atomtype[MAX_ATOMTYPES][3];
 double atomweight[MAX_ATOMTYPES]; 
 char   pname[100][20], vdwname[100][20], tname[200][20], fname[100][20], hname[20][20];
-short  *paraflag;
+short  *paraflag, *varflag;
 
 /* PSO */
 double **pbest, *gbest, *cp, cnoise, cg, comega;
