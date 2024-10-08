@@ -19,7 +19,7 @@ This file contains parameters that needs to be optimized and their maximum step 
 This file contains the uplimit of parameters.
 
 #### downlimit.reax
-This file contains the uplimit of parameters.
+This file contains the downlimit of parameters.
 
 ## LAMMPS
 LAMMPS needs to be installed in advance
